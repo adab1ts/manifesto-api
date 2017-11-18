@@ -1,14 +1,14 @@
 {
-  "name": "manifest-api",
+  "name": "manifesto-api",
   "version": "1.0.0",
-  "description": "Manifest's API",
+  "description": "Manifesto's backend API",
   "main": "server/server.js",
   "engines": {
     "node": ">=4"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adabits/manifest-api.git"
+    "url": "git+https://github.com/adab1ts/manifesto-api.git"
   },
   "license": "MIT",
   "scripts": {
@@ -17,7 +17,7 @@
     "test": "NODE_ENV=test mocha test/**/*.test.js",
     "posttest": "npm run lint && nsp check",
     "start": "node .",
-    "dev": "nodemon server/server.js --watch server"
+    "dev": "nodemon server/server.js --watch common --watch server"
   },
   "dependencies": {
     "compression": "^1.0.3",

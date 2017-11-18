@@ -1,8 +1,8 @@
-# Manifest API
+# Manifesto API
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://choosealicense.com/licenses/mit/)
 
-API of Manifest's backend.
+Manifesto's backend API.
 
 
 ## Contact
