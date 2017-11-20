@@ -10,5 +10,5 @@ const request = supertest(app)
 module.exports = {
   app,
   expect,
-  request,
+  request
 }
