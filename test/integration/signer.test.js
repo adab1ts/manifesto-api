@@ -7,7 +7,7 @@ describe('API surface', function () { // eslint-disable-line no-undef
       .send({ name: 'Foo', email: 'foo@bar.com', group: false })
       .then((res) => {
         expect(res.status).to.equal(200)
-        expect(res.body).to.eql({ id: 1, name: 'Foo', email: 'foo@bar.com', group: false })
+        expect(res.body).to.eql({ id: 1, name: 'Foo', group: false })
       })
   })
 
@@ -16,7 +16,7 @@ describe('API surface', function () { // eslint-disable-line no-undef
       .get('/api/Signers')
       .then((res) => {
         expect(res.status).to.equal(200)
-        expect(res.body).to.eql([{ id: 1, name: 'Foo', email: 'foo@bar.com', group: false }])
+        expect(res.body).to.eql([{ id: 1, name: 'Foo', group: false }])
       })
   })
 

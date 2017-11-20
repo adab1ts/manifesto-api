@@ -23,6 +23,7 @@
       "type": "date"
     }
   },
+  "hidden": ["email"],
   "validations": [],
   "relations": {},
   "acls": [],
