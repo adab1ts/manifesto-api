@@ -23,7 +23,11 @@
       "type": "date"
     }
   },
-  "hidden": ["email"],
+  "scope": {
+    "order": "name ASC",
+    "limit": 100
+  },
+  "hidden": ["id", "email"],
   "validations": [],
   "relations": {},
   "acls": [],
