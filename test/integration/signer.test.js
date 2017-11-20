@@ -7,7 +7,7 @@ describe('API surface', function () { // eslint-disable-line no-undef
       .send({ name: 'Foo', email: 'foo@bar.com', group: false })
       .then((res) => {
         expect(res.status).to.equal(200)
-        expect(res.body).to.eql({ id: 1, name: 'Foo', email: 'foo@bar.com', group: false })
+        expect(res.body).to.eql({ name: 'Foo', group: false })
       })
   })
 
@@ -16,7 +16,7 @@ describe('API surface', function () { // eslint-disable-line no-undef
       .get('/api/Signers')
       .then((res) => {
         expect(res.status).to.equal(200)
-        expect(res.body).to.eql([{ id: 1, name: 'Foo', email: 'foo@bar.com', group: false }])
+        expect(res.body).to.eql([{ name: 'Foo', group: false }])
       })
   })
 
@@ -26,6 +26,25 @@ describe('API surface', function () { // eslint-disable-line no-undef
       .get('/api/Signers/count')
       .then((res) => {
         expect(res.status).to.equal(404)
+      })
+  })
+
+  it('should return order by "name ASC" on GET /api/Signers', function () { // eslint-disable-line no-undef
+    let createUser = (user) => {
+      return request
+        .post('/api/Signers')
+        .send(user)
+    }
+
+    return Promise.all([
+        createUser({ name: 'Bar', email: 'bar@bar.com', group: false }),
+        createUser({ name: 'Baz', email: 'baz@bar.com', group: false })
+      ])
+      .then(() => request.get('/api/Signers'))
+      .then((res) => {
+        expect(res.body[0].name).to.equal('Bar')
+        expect(res.body[1].name).to.equal('Baz')
+        expect(res.body[2].name).to.equal('Foo')
       })
   })
 })
