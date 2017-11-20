@@ -14,7 +14,9 @@
   "scripts": {
     "lint": "eslint .",
     "test:watch": "npm run test -- --watch",
-    "test": "NODE_ENV=test mocha test/**/*.test.js",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "NODE_ENV=test mocha test/unit/**/*.test.js",
+    "test:integration": "NODE_ENV=test mocha test/integration/**/*.test.js",
     "posttest": "npm run lint && nsp check",
     "start": "node .",
     "dev": "nodemon server/server.js --watch common --watch server"
