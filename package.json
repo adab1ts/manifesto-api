@@ -16,10 +16,13 @@
     "test:watch": "npm run test -- --watch",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "NODE_ENV=test mocha test/unit/**/*.test.js",
-    "test:integration": "NODE_ENV=test mocha test/integration/**/*.test.js",
+    "test:integration": "npm run migrate && NODE_ENV=test mocha test/integration/**/*.test.js",
     "posttest": "npm run lint && nsp check",
     "start": "node .",
-    "dev": "nodemon server/server.js --watch common --watch server",
+    "migrate": "npm run migrate:lb && npm run migrate:custom",
+    "migrate:lb": "node server/create-lb-tables.js",
+    "migrate:custom": "node server/create-custom-tables.js",
+    "dev": "NODE_ENV=development nodemon server/server.js --watch common --watch server",
     "staging": "NODE_ENV=staging npm start"
   },
   "dependencies": {

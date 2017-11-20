@@ -20,14 +20,15 @@
       "default": false
     },
     "created_at": {
-      "type": "date"
+      "type": "date",
+      "defaultFn": "now"
     }
   },
   "scope": {
     "order": "name ASC",
     "limit": 100
   },
-  "hidden": ["id", "email"],
+  "hidden": ["id", "email", "created_at"],
   "validations": [],
   "relations": {},
   "acls": [],
