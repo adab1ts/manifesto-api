@@ -18,12 +18,13 @@ describe('API surface', function () { // eslint-disable-line no-undef
       })
   })
 
-  // TODO ensure all hidden endpoints
-  it('should not find GET /api/Signers/count', function () { // eslint-disable-line no-undef
+  it('should GET /api/Signers/count', function () { // eslint-disable-line no-undef
     return request
       .get('/api/Signers/count')
       .then((res) => {
-        expect(res.status).to.equal(404)
+        expect(res.status).to.equal(200)
+        // FIXME test expect is coupled to create-signer.test.js
+        expect(res.body.count).to.equal(1)
         return res
       })
   })

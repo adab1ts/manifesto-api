@@ -26,7 +26,7 @@
   },
   "scope": {
     "order": "name ASC",
-    "limit": 100
+    "limit": 45
   },
   "hidden": ["id", "email", "created_at"],
   "validations": [],
