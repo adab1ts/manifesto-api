@@ -1,4 +1,4 @@
-const { request, expect } = require('../common')
+const { app, request, expect } = require('../common')
 
 describe('API surface', function () { // eslint-disable-line no-undef
   it('should POST /api/Signers', function () { // eslint-disable-line no-undef
@@ -11,4 +11,8 @@ describe('API surface', function () { // eslint-disable-line no-undef
         return res
       })
   })
+})
+
+after(function () {  // eslint-disable-line no-undef
+  app.dataSources.db.disconnect()
 })

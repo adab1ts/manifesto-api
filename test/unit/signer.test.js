@@ -3,7 +3,7 @@ const { app, expect } = require('../common')
 // Get a reference to the Signer model
 const Signer = app.models.Signer
 
-// TODO should use mocks
+// TODO should use mocks or different connector?
 
 describe('Validation', function () { // eslint-disable-line no-undef
   it('should reject a signer with no name', function () { // eslint-disable-line no-undef
@@ -56,10 +56,7 @@ describe('Validation', function () { // eslint-disable-line no-undef
       })
   })
 
-  it('should ensure email uniqueness', function () { // eslint-disable-line no-undef
-    return Signer.create({ name: 'john doe', email: 'john.doe@manifesto.org', group: false })
-      .then(res => {
-        expect(res.name).to.equal('John Doe')
-      })
+  after(function () { // eslint-disable-line no-undef
+    app.dataSources.db.disconnect()
   })
 })

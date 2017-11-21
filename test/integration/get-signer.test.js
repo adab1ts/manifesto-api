@@ -1,7 +1,7 @@
-const { request, expect } = require('../common')
-const { migrate } = require('../../server/create-custom-tables')
+const { app, request, expect } = require('../common')
 
-// FIXME tests execute before hooks finishes, DB state is polluted from prev tests
+// FIXME DB state should be predictable, tests execute before hooks finishes :(
+// const { migrate } = require('../../server/create-custom-tables')
 // before(function(done){
 //   return migrate(['Signer'])
 // })
@@ -36,10 +36,10 @@ describe('API surface', function () { // eslint-disable-line no-undef
     }
 
     return Promise.all([
-        createUser({ name: 'Foo', email: 'foo@bar.com', group: false }),
-        createUser({ name: 'Bar', email: 'bar@bar.com', group: false }),
-        createUser({ name: 'Baz', email: 'baz@bar.com', group: false })
-      ])
+      createUser({ name: 'Foo', email: 'foo@bar.com', group: false }),
+      createUser({ name: 'Bar', email: 'bar@bar.com', group: false }),
+      createUser({ name: 'Baz', email: 'baz@bar.com', group: false })
+    ])
       .then(() => request.get('/api/Signers'))
       .then((res) => {
         expect(res.body[0].name).to.equal('Bar')
@@ -48,4 +48,8 @@ describe('API surface', function () { // eslint-disable-line no-undef
         return res
       })
   })
+})
+
+after(function () {  // eslint-disable-line no-undef
+  app.dataSources.db.disconnect()
 })
