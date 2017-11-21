@@ -28,7 +28,7 @@ module.exports = function (Signer) {
   Signer.disableRemoteMethodByName('createChangeStream')                   // disable GET and POST /Signers/change-stream
 
   Signer.disableRemoteMethodByName('confirm')                              // disables GET /Signers/confirm
-  Signer.disableRemoteMethodByName('count')                                // disables GET /Signers/count
+  // Signer.disableRemoteMethodByName('count')                                // disables GET /Signers/count
   Signer.disableRemoteMethodByName('findOne')                              // disables GET /Signers/findOne
 
   Signer.disableRemoteMethodByName('resetPassword')                        // disables POST /Signers/reset
