@@ -25,10 +25,9 @@
     }
   },
   "scope": {
-    "order": "name ASC",
-    "limit": 45
+    "order": "name ASC"
   },
-  "hidden": ["id", "email", "created_at"],
+  "hidden": ["email", "created_at"],
   "validations": [],
   "relations": {},
   "acls": [],

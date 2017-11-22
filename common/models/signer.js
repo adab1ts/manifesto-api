@@ -45,10 +45,10 @@ module.exports = function (Signer) {
 
   // TODO: Set created_at property value
   Signer.observe('before save', function (ctx, next) {
-    if (ctx.instance) {
+    if (ctx.isNewInstance) {
       // Capitalize name parts
       ctx.instance.name = ctx.instance.name && ctx.instance.name.split(' ')
-        .map(w => w.charAt(0).toUpperCase() + w.slice(1, w.length))
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1, w.length).toLowerCase())
         .join(' ')
 
       ctx.instance.email = ctx.instance.email && ctx.instance.email.toLowerCase()
