@@ -4,6 +4,56 @@
 
 Manifesto's backend API.
 
+## Requirements
+
+ + docker & docker-compose
+ + NodeJS 6+
+
+## Setup
+
+```
+$ npm install
+```
+
+## Develop
+
+```
+$ npm run dev
+```
+
+## Test
+
+```
+$ npm test
+```
+
+## ENV
+
+Following variables are needed to correctly boot the server
+```
+DB_CONNECTOR=postgresql
+DB_URL=postgres://postgres:postgres@localhost/manifesto
+DB_MIGRATE_STRATEGY=safe
+```
+You can provision them using an `.env` file
+
+## DB migrate strategies
+
+ + To automatically migrate your applications models use `DB_MIGRATE_STRATEGY=safe`. It will execute `autoupdate` method from Loopback [see docs](http://apidocs.loopback.io/loopback-datasource-juggler/#datasource-prototype-autoupdate).
+
+ + To re-create DB tables from scratch, use `DB_MIGRATE_STRATEGY=drop` which will call Loopback's `automigrate` method [see docs](http://apidocs.loopback.io/loopback-datasource-juggler/#datasource-prototype-automigrate) **WARNING** in many situations, this will destroy data!
+
+Migrate command can also be run like:
+```
+$ npm run migrate
+```
+
+## Production server
+
+```
+$ npm start
+```
+
 
 ## Contact
 
