@@ -1,0 +1,14 @@
+{
+  "initial": {
+    "cors": {
+      "params": {
+        "origin": [
+          "https://www.pareudepararme.org",
+          "https://www.paraddepararme.org"
+        ],
+        "credentials": true,
+        "maxAge": 86400
+      }
+    }
+  }
+}
